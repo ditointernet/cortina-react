@@ -1,0 +1,57 @@
+{
+  "name": "cora-react",
+  "version": "0.1.0",
+  "author": "Arthur Xavier <arthur.xavierx@gmail.com> (http://arthur-xavier.github.io/)",
+  "license": "MIT",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "jest --env=jsdom --config=./jest.config.js",
+    "test:coverage": "jest --env=jsdom --config=./jest.config.js --coverage",
+    "format": "prettier --write '{src,test}/**/*.js'",
+    "lint": "eslint --fix --config .eslintrc src/"
+  },
+  "files": [
+    "build/",
+    "src/",
+    "LICENSE"
+  ],
+  "keywords": [
+    "coroutine",
+    "generator",
+    "iterator",
+    "asynchronous",
+    "async",
+    "dsl",
+    "edsl",
+    "react",
+    "component"
+  ],
+  "peerDependencies": {
+    "react": "^16.2.0"
+  },
+  "devDependencies": {
+    "babel-core": "6.26.0",
+    "babel-eslint": "7.2.3",
+    "babel-jest": "20.0.3",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-es2015-destructuring": "^6.23.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-stage-3": "^6.24.1",
+    "babel-runtime": "6.26.0",
+    "eslint": "4.10.0",
+    "husky": "^0.14.3",
+    "jest": "20.0.4",
+    "prettier": "^1.11.1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run format && npm run lint && npm run test:coverage"
+    }
+  },
+  "engines": {
+    "node": ">= 7"
+  },
+  "dependencies": {
+    "react": "^16.3.0"
+  }
+}
