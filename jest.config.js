@@ -24,12 +24,11 @@ module.exports = {
     '^.+\\.js$': '<rootDir>/node_modules/babel-jest',
   },
   transformIgnorePatterns: [
-    '[/\\\\]node_modules[/\\\\].+\\.js$',
+    '[/\\\\]node_modules[/\\\\](?!cora)',
   ],
   moduleDirectories: [
     'node_modules',
     'src',
-    'src/modules',
   ],
   moduleFileExtensions: [
     'web.js',

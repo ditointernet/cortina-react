@@ -1,6 +1,7 @@
 {
   "name": "cora-react",
   "version": "0.1.0",
+  "description": "Coroutine-based EDSL for building React components and applications",
   "author": "Arthur Xavier <arthur.xavierx@gmail.com> (http://arthur-xavier.github.io/)",
   "license": "MIT",
   "main": "src/index.js",
@@ -26,6 +27,9 @@
     "react",
     "component"
   ],
+  "dependencies": {
+    "cora": "github:arthurxavierx/cora#master"
+  },
   "peerDependencies": {
     "react": "^16.2.0"
   },
@@ -41,7 +45,10 @@
     "eslint": "4.10.0",
     "husky": "^0.14.3",
     "jest": "20.0.4",
-    "prettier": "^1.11.1"
+    "prettier": "^1.11.1",
+    "react": "^16.3.0",
+    "rollup": "^0.57.1",
+    "rollup-plugin-babel": "^3.0.3"
   },
   "husky": {
     "hooks": {
@@ -50,8 +57,5 @@
   },
   "engines": {
     "node": ">= 7"
-  },
-  "dependencies": {
-    "react": "^16.3.0"
   }
 }

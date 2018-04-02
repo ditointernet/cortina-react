@@ -1,7 +1,7 @@
-import { Component } from 'react;';
+import { Component } from 'react';
 import { Process } from 'cora';
-import { all, race } from 'cora/combinators';
-import { getIterator, isFunction } from 'cora/types';
+import { all, race } from 'cora/src/combinators';
+import { getIterator, isFunction } from 'cora/src/types';
 
 import { emit } from './event';
 import { render } from './render';
