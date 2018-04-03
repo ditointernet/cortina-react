@@ -1,10 +1,18 @@
-import { Component } from 'react';
+import React, { Component } from 'react';
 import { Process } from 'cora';
-import { all, race } from 'cora/src/combinators';
 import { getIterator, isFunction } from 'cora/src/types';
 
 import { emit } from './event';
-import { render } from './render';
+
+//
+export const co = coroutineElement;
+export function coroutineElement(iterator, children) {
+  return React.createElement(
+    Coroutine,
+    { __iterator: getIterator(iterator) },
+    ...children
+  );
+}
 
 //
 export function coroutineComponent(generator) {
@@ -86,27 +94,22 @@ class Coroutine extends Component {
   }
 
   _handler = query => {
-    const { onEmit, onYield } = this.props;
-
     if (!query) return;
 
-    if (isFunction(onYield)) onYield(query.event);
+    const { onEmit, onYield } = this.props;
 
-    switch (query.constructor) {
-      case render:
-        return query[Symbol.iterator](this, this.update);
+    if (isFunction(onYield)) {
+      onYield(query.event);
+    }
 
-      case emit:
-        if (isFunction(onEmit)) onEmit(query.event);
-        return query;
-
-      case race:
-      case all:
-        query.handler = this._handler;
-        return query;
-
-      default:
-        return query;
+    if (React.isValidElement(query)) {
+      this.update(query);
+      return;
+    } else if (query instanceof emit) {
+      if (isFunction(onEmit)) onEmit(query.event);
+      return query;
+    } else {
+      return query;
     }
   };
 }

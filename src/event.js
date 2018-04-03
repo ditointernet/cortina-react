@@ -1,6 +1,5 @@
-import { Query } from 'cora';
+import { Channel, Query } from 'cora';
 import { isFunction } from 'cora/src/types';
-import { render } from './render';
 
 export const emit = Query('emit', function(event) {
   this.event = event;
@@ -10,16 +9,20 @@ export const emit = Query('emit', function(event) {
   };
 });
 
-export const wait = Query('wait', function(query) {
-  if (!(query instanceof render) && !isFunction(query))
+export const wait = Query('wait', function(view) {
+  if (!isFunction(view))
     throw new Error(
-      `"${name}" must receive a "render" query or a function as argument.`
+      `"wait" must receive as argument a function that returns a ReactElement.`
     );
 
-  this.render = query instanceof render ? query : render(query);
+  this.view = this.element = view;
+
+  this.channel = new Channel();
+  this.send = value => this.channel.put(value);
+  this.take = this.channel.take;
 
   return function*() {
-    yield this.render;
-    return this.render.take;
+    yield this.view(this.send);
+    return this.take;
   };
 });

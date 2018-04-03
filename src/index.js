@@ -1,4 +1,2 @@
-export { coroutineComponent } from './component';
-
+export { co, coroutineElement, coroutineComponent } from './component';
 export * from './event';
-export * from './render';

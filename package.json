@@ -6,10 +6,11 @@
   "license": "MIT",
   "main": "src/index.js",
   "scripts": {
-    "test": "jest --env=jsdom --config=./jest.config.js",
+    "test": "jest --env=jsdom --config=./jest.config.js --watch",
     "test:coverage": "jest --env=jsdom --config=./jest.config.js --coverage",
     "format": "prettier --write '{src,test}/**/*.js'",
-    "lint": "eslint --fix --config .eslintrc src/"
+    "lint": "eslint --fix --config .eslintrc src/",
+    "precommit": "npm run format && git add . && npm run lint && npm run test:coverage"
   },
   "files": [
     "build/",
@@ -49,11 +50,6 @@
     "react": "^16.3.0",
     "rollup": "^0.57.1",
     "rollup-plugin-babel": "^3.0.3"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run format && npm run lint && npm run test:coverage"
-    }
   },
   "engines": {
     "node": ">= 7"

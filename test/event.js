@@ -6,6 +6,6 @@ test('emit should be a valid query', () => {
 });
 
 test('wait should be a valid query', () => {
-  const q = wait('test');
+  const q = wait(() => null);
   expect(q).toBeInstanceOf(wait);
 });
