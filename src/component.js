@@ -49,7 +49,7 @@ class Coroutine extends Component {
     if (this.props === prevProps) return;
 
     this.cancel();
-    if (this.mounted) this.forceUpdate(this.props);
+    if (this.mounted) this.forceUpdate(this.props, prevProps);
   }
 
   componentWillUnmount() {
@@ -62,10 +62,11 @@ class Coroutine extends Component {
     this.iterator && isFunction(this.iterator.return) && this.iterator.return();
   }
 
-  restart(props) {
+  restart(props, prevProps) {
     this.iterator = getIterator(
       props.__iterator || this[Symbol.iterator],
-      props
+      props,
+      prevProps
     );
     this.target = this.iterator;
     return this.iterator;
@@ -77,8 +78,8 @@ class Coroutine extends Component {
     }
   };
 
-  forceUpdate(props) {
-    this.restart(props);
+  forceUpdate(props, prevProps) {
+    this.restart(props, prevProps);
 
     this.promise && this.promise.cancel();
     this.promise = new Process(this.iterator, this._handler).run();
