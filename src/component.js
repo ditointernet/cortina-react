@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Process } from 'cora';
+import { all, race } from 'cora/src/combinators';
 import { getIterator, isFunction } from 'cora/src/types';
 
 import { emit } from './event';
@@ -108,6 +109,9 @@ class Coroutine extends Component {
       return;
     } else if (query instanceof emit) {
       if (isFunction(onEmit)) onEmit(query.event);
+      return query;
+    } else if (query instanceof all || query instanceof race) {
+      query.handler = this._handler;
       return query;
     } else {
       return query;
