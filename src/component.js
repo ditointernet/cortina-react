@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Process } from 'cora';
+import { all, race } from 'cora/src/combinators';
 import { getIterator, isFunction } from 'cora/src/types';
 
 import { emit } from './event';
@@ -49,7 +50,7 @@ class Coroutine extends Component {
     if (this.props === prevProps) return;
 
     this.cancel();
-    if (this.mounted) this.forceUpdate(this.props);
+    if (this.mounted) this.forceUpdate(this.props, prevProps);
   }
 
   componentWillUnmount() {
@@ -62,10 +63,11 @@ class Coroutine extends Component {
     this.iterator && isFunction(this.iterator.return) && this.iterator.return();
   }
 
-  restart(props) {
+  restart(props, prevProps) {
     this.iterator = getIterator(
       props.__iterator || this[Symbol.iterator],
-      props
+      props,
+      prevProps
     );
     this.target = this.iterator;
     return this.iterator;
@@ -77,8 +79,8 @@ class Coroutine extends Component {
     }
   };
 
-  forceUpdate(props) {
-    this.restart(props);
+  forceUpdate(props, prevProps) {
+    this.restart(props, prevProps);
 
     this.promise && this.promise.cancel();
     this.promise = new Process(this.iterator, this._handler).run();
@@ -107,6 +109,9 @@ class Coroutine extends Component {
       return;
     } else if (query instanceof emit) {
       if (isFunction(onEmit)) onEmit(query.event);
+      return query;
+    } else if (query instanceof all || query instanceof race) {
+      query.handler = this._handler;
       return query;
     } else {
       return query;

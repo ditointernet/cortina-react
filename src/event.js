@@ -18,11 +18,21 @@ export const wait = Query('wait', function(view) {
   this.view = this.element = view;
 
   this.channel = new Channel();
-  this.send = value => this.channel.put(value);
+  this.dispatch = value => this.channel.put(value);
   this.take = this.channel.take;
 
   return function*() {
-    yield this.view(this.send);
+    yield this.view(this.dispatch);
     return this.take;
   };
 });
+
+export function mapDispatch(actions, dispatch) {
+  return Object.keys(actions).reduce(
+    (obj, key) => ({
+      ...obj,
+      [key]: (...args) => dispatch(actions[key](...args)),
+    }),
+    {}
+  );
+}
