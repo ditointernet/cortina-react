@@ -1,5 +1,5 @@
-import { Channel, Query } from 'cora';
-import { isFunction } from 'cora/src/types';
+import { Channel, Query } from 'cortina';
+import { isFunction } from 'cortina/src/types';
 
 export const emit = Query('emit', function(event) {
   this.event = event;

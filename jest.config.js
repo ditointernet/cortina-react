@@ -16,7 +16,7 @@ module.exports = {
     '^.+\\.js$': '<rootDir>/node_modules/babel-jest',
   },
   transformIgnorePatterns: [
-    '[/\\\\]node_modules[/\\\\](?!cora)',
+    '[/\\\\]node_modules[/\\\\](?!cortina)',
   ],
   moduleDirectories: [
     'node_modules',
