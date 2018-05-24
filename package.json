@@ -1,9 +1,10 @@
 {
-  "name": "cora-react",
-  "version": "0.1.0",
+  "name": "cortina-react",
+  "version": "0.1.1",
   "description": "Coroutine-based EDSL for building React components and applications",
   "author": "Arthur Xavier <arthur.xavierx@gmail.com> (http://arthur-xavier.github.io/)",
   "license": "MIT",
+  "repository": "arthurxavierx/cortina-react",
   "main": "src/index.js",
   "scripts": {
     "test": "jest --env=jsdom --config=./jest.config.js --watch",
@@ -29,7 +30,7 @@
     "component"
   ],
   "dependencies": {
-    "cora": "github:arthurxavierx/cora#master"
+    "cortina": "~0.1.0"
   },
   "peerDependencies": {
     "react": "^16.2.0"
