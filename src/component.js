@@ -27,7 +27,7 @@ export function coroutineComponent(generator) {
     }
 
     get [Symbol.iterator]() {
-      return generator;
+      return generator(this.props);
     }
   };
 }
