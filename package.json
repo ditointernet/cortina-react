@@ -1,6 +1,6 @@
 {
   "name": "cortina-react",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "Coroutine-based EDSL for building React components and applications",
   "author": "Arthur Xavier <arthur.xavierx@gmail.com> (http://arthur-xavier.github.io/)",
   "license": "MIT",
