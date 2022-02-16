@@ -6,7 +6,7 @@
   "license": "MIT",
   "main": "src/index.js",
   "scripts": {
-    "build": "babel ./src -o ./dist/index.js",
+    "build": "babel ./src -o ./build/index.js",
     "test": "jest --env=jsdom --config=./jest.config.js --watch",
     "test:coverage": "jest --env=jsdom --config=./jest.config.js --coverage",
     "format": "prettier --write '{src,test}/**/*.js'",
