@@ -30,7 +30,7 @@
     "component"
   ],
   "dependencies": {
-    "cortina": "github:ditointernet/cortina#0f574d0014a32870b2f1ef58c982fb42e46c0c2c"
+    "cortina": "github:ditointernet/cortina"
   },
   "peerDependencies": {
     "react": "^16.2.0"
