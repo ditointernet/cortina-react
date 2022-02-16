@@ -4,7 +4,6 @@
   "description": "Coroutine-based EDSL for building React components and applications",
   "author": "Arthur Xavier <arthur.xavierx@gmail.com> (http://arthur-xavier.github.io/)",
   "license": "MIT",
-  "repository": "arthurxavierx/cortina-react",
   "main": "src/index.js",
   "scripts": {
     "build": "babel ./src -o ./dist/index.js",
@@ -31,7 +30,7 @@
     "component"
   ],
   "dependencies": {
-    "cortina": "~0.1.0"
+    "cortina": "github:ditointernet/cortina#0f574d0014a32870b2f1ef58c982fb42e46c0c2c"
   },
   "peerDependencies": {
     "react": "^16.2.0"
