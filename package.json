@@ -7,6 +7,7 @@
   "repository": "arthurxavierx/cortina-react",
   "main": "src/index.js",
   "scripts": {
+    "build": "babel ./src -o ./dist/index.js",
     "test": "jest --env=jsdom --config=./jest.config.js --watch",
     "test:coverage": "jest --env=jsdom --config=./jest.config.js --coverage",
     "format": "prettier --write '{src,test}/**/*.js'",
@@ -36,6 +37,7 @@
     "react": "^16.2.0"
   },
   "devDependencies": {
+    "babel-cli": "^6.26.0",
     "babel-core": "6.26.0",
     "babel-eslint": "7.2.3",
     "babel-jest": "20.0.3",
