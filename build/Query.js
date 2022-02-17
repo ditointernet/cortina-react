@@ -28,7 +28,7 @@ function Query(name, constructor) {
     } else if ((0, _types.isObject)(gen) && (0, _types.isFunction)(gen[Symbol.iterator])) {
       this[Symbol.iterator] = (...iterArgs) => gen[Symbol.iterator](...iterArgs);
     } else {
-      throw new Error('Query\'s constructor function should return a generator or iterator');
+      throw new Error("Query's constructor function should return a generator or iterator");
     }
   }
 

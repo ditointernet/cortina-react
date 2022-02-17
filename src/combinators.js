@@ -1,6 +1,10 @@
-import { runProcess } from './process';
-import Query from './Query';
-import { getIterator, hasIterator } from './types';
+import * as Process from './process';
+import * as _Query from './Query';
+import * as Types from './types';
+
+const { runProcess } = Process;
+const Query = _Query.default;
+const { getIterator, hasIterator } = Types;
 
 export function delay(seconds) {
   return new Promise(resolve => setTimeout(resolve, seconds * 1000));
