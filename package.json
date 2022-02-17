@@ -52,7 +52,6 @@
     "node": ">= 7"
   },
   "dependencies": {
-    "@babel/runtime": "^7.17.2",
-    "cortina": "github:ditointernet/cortina"
+    "@babel/runtime": "^7.17.2"
   }
 }
