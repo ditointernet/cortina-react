@@ -28,13 +28,11 @@
     "react",
     "component"
   ],
-  "dependencies": {
-    "cortina": "github:ditointernet/cortina"
-  },
   "peerDependencies": {
     "react": "^16.2.0"
   },
   "devDependencies": {
+    "cortina": "github:ditointernet/cortina",
     "babel-cli": "^6.26.0",
     "babel-core": "6.26.0",
     "babel-eslint": "7.2.3",
