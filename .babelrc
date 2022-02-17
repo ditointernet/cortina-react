@@ -3,6 +3,8 @@
     [
       "env",
       {
+        "modules": false,
+        "loose": true,
         "targets": {
           "node": "8.9.4"
         }
@@ -14,11 +16,6 @@
     "babel-plugin-transform-es2015-destructuring",
     "babel-plugin-transform-class-properties",
     "add-module-exports",
-    [
-      "transform-es2015-modules-commonjs",
-      {
-        "allowTopLevelThis": true
-      }
-    ]
+    "transform-es2015-modules-commonjs"
   ]
 }
