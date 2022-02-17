@@ -1,17 +1,7 @@
 {
-  "presets": [
-    [
-      "env",
-      {
-        "targets": {
-          "node": "8.9.4"
-        }
-      }
-    ],
-    "stage-3"
-  ],
+  "presets": ["@babel/react", "@babel/env"],
   "plugins": [
-    "babel-plugin-transform-es2015-destructuring",
-    "babel-plugin-transform-class-properties"
+    "@babel/plugin-proposal-class-properties",
+    "@babel/transform-runtime"
   ]
 }

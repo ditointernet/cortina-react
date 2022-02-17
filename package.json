@@ -5,8 +5,9 @@
   "author": "Arthur Xavier <arthur.xavierx@gmail.com> (http://arthur-xavier.github.io/)",
   "license": "MIT",
   "main": "build/index.js",
+  "module": "src/index.js",
   "scripts": {
-    "build": "babel ./src -d ./build",
+    "build": "webpack --mode production",
     "test": "jest --env=jsdom --config=./jest.config.js --watch",
     "test:coverage": "jest --env=jsdom --config=./jest.config.js --coverage",
     "format": "prettier --write '{src,test}/**/*.js'",
@@ -15,6 +16,7 @@
   },
   "files": [
     "build/",
+    "src/",
     "LICENSE"
   ],
   "keywords": [
@@ -32,25 +34,28 @@
     "react": "^16.2.0"
   },
   "devDependencies": {
-    "cortina": "github:ditointernet/cortina",
-    "babel-cli": "^6.26.0",
-    "babel-core": "6.26.0",
+    "@babel/core": "^7.17.5",
+    "@babel/plugin-proposal-class-properties": "^7.16.7",
+    "@babel/plugin-transform-runtime": "^7.17.0",
+    "@babel/preset-env": "^7.16.11",
+    "@babel/preset-react": "^7.16.7",
     "babel-eslint": "7.2.3",
-    "babel-jest": "20.0.3",
-    "babel-plugin-transform-class-properties": "^6.24.1",
-    "babel-plugin-transform-es2015-destructuring": "^6.23.0",
-    "babel-preset-env": "^1.6.1",
-    "babel-preset-stage-3": "^6.24.1",
-    "babel-runtime": "6.26.0",
+    "babel-loader": "^8.2.3",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-runtime": "^6.26.0",
+    "cortina": "github:ditointernet/cortina",
     "eslint": "4.10.0",
     "husky": "^0.14.3",
-    "jest": "20.0.4",
+    "jest": "^27.5.1",
     "prettier": "^1.11.1",
     "react": "^16.3.0",
-    "rollup": "^0.57.1",
-    "rollup-plugin-babel": "^3.0.3"
+    "webpack": "^5.69.1",
+    "webpack-cli": "^4.9.2"
   },
   "engines": {
     "node": ">= 7"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.17.2"
   }
 }

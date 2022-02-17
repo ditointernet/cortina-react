@@ -1,5 +1,8 @@
 import { Channel, Query } from 'cortina';
-import { isFunction } from 'cortina/build/types';
+
+function isFunction(fn) {
+  return fn && typeof fn === 'function';
+}
 
 export const emit = Query('emit', function(event) {
   this.event = event;
