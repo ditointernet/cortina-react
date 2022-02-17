@@ -11,7 +11,7 @@ exports.mapDispatch = mapDispatch;
 
 var _cortina = require('cortina');
 
-var _types = require('cortina/src/types');
+var _types = require('cortina/build/types');
 
 const emit = exports.emit = (0, _cortina.Query)('emit', function (event) {
   this.event = event;

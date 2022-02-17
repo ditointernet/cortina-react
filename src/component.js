@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Process } from 'cortina';
-import { all, race } from 'cortina/src/combinators';
-import { getIterator, isFunction } from 'cortina/src/types';
+import { all, race } from 'cortina/build/combinators';
+import { getIterator, isFunction } from 'cortina/build/types';
 
 import { emit } from './event';
 

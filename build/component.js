@@ -13,9 +13,9 @@ var _react2 = _interopRequireDefault(_react);
 
 var _cortina = require('cortina');
 
-var _combinators = require('cortina/src/combinators');
+var _combinators = require('cortina/build/combinators');
 
-var _types = require('cortina/src/types');
+var _types = require('cortina/build/types');
 
 var _event = require('./event');
 
