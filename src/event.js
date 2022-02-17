@@ -1,4 +1,6 @@
-import { Channel, Query } from 'cortina';
+import * as Cortina from 'cortina';
+
+const { Channel, Query } = Cortina.default;
 
 function isFunction(fn) {
   return fn && typeof fn === 'function';
