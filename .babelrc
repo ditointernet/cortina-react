@@ -13,6 +13,12 @@
   "plugins": [
     "babel-plugin-transform-es2015-destructuring",
     "babel-plugin-transform-class-properties",
-    "add-module-exports"
+    "add-module-exports",
+    [
+      "transform-es2015-modules-commonjs",
+      {
+        "allowTopLevelThis": true
+      }
+    ]
   ]
 }
