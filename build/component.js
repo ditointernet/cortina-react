@@ -1,8 +1,6 @@
 'use strict';
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+exports.__esModule = true;
 exports.co = undefined;
 exports.coroutineElement = coroutineElement;
 exports.coroutineComponent = coroutineComponent;

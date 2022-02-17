@@ -1,8 +1,6 @@
 'use strict';
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+exports.__esModule = true;
 exports.go = exports.spawn = exports.runProcess = exports.CancellationToken = exports.Query = exports.getIterator = exports.isPromise = exports.isObject = exports.isIterator = exports.isFunction = exports.filter = exports.map = exports.loopWhile = exports.loop = exports.after = exports.step = exports.all = exports.race = exports.compose = exports.pipe = exports.delay = exports.mapDispatch = exports.emit = exports.wait = exports.coroutineComponent = exports.coroutineElement = exports.co = undefined;
 
 var _combinators = require('./combinators');

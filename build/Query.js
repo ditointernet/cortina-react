@@ -1,8 +1,6 @@
 'use strict';
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+exports.__esModule = true;
 exports.default = Query;
 
 var _types = require('./types');
@@ -36,4 +34,3 @@ function Query(name, constructor) {
 
   return _query;
 }
-module.exports = exports.default;
