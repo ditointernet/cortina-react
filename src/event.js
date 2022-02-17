@@ -1,10 +1,6 @@
-import * as Cortina from 'cortina';
-
-const { Channel, Query } = Cortina.default;
-
-function isFunction(fn) {
-  return fn && typeof fn === 'function';
-}
+import Channel from './channel';
+import Query from './Query';
+import { isFunction } from './types';
 
 export const emit = Query('emit', function(event) {
   this.event = event;

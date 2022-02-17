@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
-import { Process } from 'cortina';
-import { all, race } from 'cortina';
-import { getIterator } from 'cortina';
+
+import Process from './process';
+import { all, race } from './combinators';
+import { getIterator, isFunction } from './types';
 
 import { emit } from './event';
-
-function isFunction(fn) {
-  return fn && typeof fn === 'function';
-}
 
 //
 export const co = coroutineElement;

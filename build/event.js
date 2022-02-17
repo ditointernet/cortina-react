@@ -9,22 +9,19 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 exports.mapDispatch = mapDispatch;
 
-var _cortina = require('cortina');
+var _channel = require('./channel');
 
-var Cortina = _interopRequireWildcard(_cortina);
+var _channel2 = _interopRequireDefault(_channel);
 
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+var _Query = require('./Query');
 
-var _Cortina$default = Cortina.default;
-const Channel = _Cortina$default.Channel,
-      Query = _Cortina$default.Query;
+var _Query2 = _interopRequireDefault(_Query);
 
+var _types = require('./types');
 
-function isFunction(fn) {
-  return fn && typeof fn === 'function';
-}
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-const emit = exports.emit = Query('emit', function (event) {
+const emit = exports.emit = (0, _Query2.default)('emit', function (event) {
   this.event = event;
   return function* () {
     yield;
@@ -32,12 +29,12 @@ const emit = exports.emit = Query('emit', function (event) {
   };
 });
 
-const wait = exports.wait = Query('wait', function (view) {
-  if (!isFunction(view)) throw new Error(`"wait" must receive as argument a function that returns a ReactElement.`);
+const wait = exports.wait = (0, _Query2.default)('wait', function (view) {
+  if (!(0, _types.isFunction)(view)) throw new Error(`"wait" must receive as argument a function that returns a ReactElement.`);
 
   this.view = this.element = view;
 
-  this.channel = new Channel();
+  this.channel = new _channel2.default();
   this.dispatch = value => this.channel.put(value);
   this.take = this.channel.take;
 

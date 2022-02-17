@@ -11,20 +11,22 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _cortina = require('cortina');
+var _process = require('./process');
+
+var _process2 = _interopRequireDefault(_process);
+
+var _combinators = require('./combinators');
+
+var _types = require('./types');
 
 var _event = require('./event');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function isFunction(fn) {
-  return fn && typeof fn === 'function';
-}
-
 //
 const co = exports.co = coroutineElement;
 function coroutineElement(iterator, children) {
-  return _react2.default.createElement(Coroutine, { __iterator: (0, _cortina.getIterator)(iterator) }, ...children);
+  return _react2.default.createElement(Coroutine, { __iterator: (0, _types.getIterator)(iterator) }, ...children);
 }
 
 //
@@ -62,7 +64,7 @@ class Coroutine extends _react.Component {
             onYield = _props.onYield;
 
 
-      if (isFunction(onYield)) {
+      if ((0, _types.isFunction)(onYield)) {
         onYield(query.event);
       }
 
@@ -70,9 +72,9 @@ class Coroutine extends _react.Component {
         this.update(query);
         return;
       } else if (query instanceof _event.emit) {
-        if (isFunction(onEmit)) onEmit(query.event);
+        if ((0, _types.isFunction)(onEmit)) onEmit(query.event);
         return query;
-      } else if (query instanceof _cortina.all || query instanceof _cortina.race) {
+      } else if (query instanceof _combinators.all || query instanceof _combinators.race) {
         query.handler = this._handler;
         return query;
       } else {
@@ -105,11 +107,11 @@ class Coroutine extends _react.Component {
 
   cancel() {
     this.promise && this.promise.cancel();
-    this.iterator && isFunction(this.iterator.return) && this.iterator.return();
+    this.iterator && (0, _types.isFunction)(this.iterator.return) && this.iterator.return();
   }
 
   restart(props, prevProps) {
-    this.iterator = (0, _cortina.getIterator)(props.__iterator || this[Symbol.iterator], props, prevProps);
+    this.iterator = (0, _types.getIterator)(props.__iterator || this[Symbol.iterator], props, prevProps);
     this.target = this.iterator;
     return this.iterator;
   }
@@ -118,11 +120,11 @@ class Coroutine extends _react.Component {
     this.restart(props, prevProps);
 
     this.promise && this.promise.cancel();
-    this.promise = new _cortina.Process(this.iterator, this._handler).run();
+    this.promise = new _process2.default(this.iterator, this._handler).run();
 
     const onReturn = props.onReturn;
 
-    this.promise.then(r => isFunction(onReturn) ? onReturn(r) : null);
+    this.promise.then(r => (0, _types.isFunction)(onReturn) ? onReturn(r) : null);
 
     return this.iterator;
   }
